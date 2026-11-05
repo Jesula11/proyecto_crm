@@ -9,8 +9,8 @@ import com.proyecto.crm.entities.Departamento;
 
 @Repository
 public interface DepartamentoRepository extends JpaRepositoryImplementation<Departamento, Long> {
-	boolean existsByDepartamento(String departamento);
-    Optional<Departamento> findByDepartamento(String departamento);
-    int countByDepartamento(String departamento);
-    void deleteByDepartamento(String departamento);
+	boolean existsByCodigo(String codigo);
+    Optional<Departamento> findByCodigo(String codigo);
+    int countByCodigo(String codigo);
+    void deleteByCodigo(String codigo);
 }

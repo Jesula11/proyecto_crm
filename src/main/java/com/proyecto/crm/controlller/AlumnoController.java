@@ -39,7 +39,7 @@ public class AlumnoController {
     }
     
     // READ BY DNI - GET /api/alumnos/{dni}
-    @GetMapping("{dni}")
+    @GetMapping("/dni/{dni}")
     public ResponseEntity<AlumnoResponseDto> obtenerPorDni(@PathVariable String dni) {
         return ResponseEntity.ok(alumnoService.obtenerPorDni(dni));
     }
@@ -63,7 +63,7 @@ public class AlumnoController {
     }
     
     // UPDATE - PUT /api/alumnos/{dni}
-    @PutMapping("/{dni}")
+    @PutMapping("/dni/{dni}")
     public ResponseEntity<AlumnoResponseDto> actualizar(
             @PathVariable String dni,
             @RequestBody AlumnoRequestDto requestDto) {
@@ -79,7 +79,7 @@ public class AlumnoController {
     }
     
     // 5. DELETE - DELETE /api/alumnos/{dni}
-    @DeleteMapping("/{dni}")
+    @DeleteMapping("/dni/{dni}")
     public ResponseEntity<Void> eliminar(@PathVariable String dni) {
         alumnoService.eliminar(dni);
         return ResponseEntity.noContent().build();

@@ -9,8 +9,8 @@ import com.proyecto.crm.entities.Modulo;
 
 @Repository
 public interface ModuloRepository extends JpaRepositoryImplementation<Modulo, Long> {
-	boolean existsByModulo(String modulo);
-    Optional<Modulo> findByModulo(String modulo);
-    int countByModulo(String modulo);
-    void deleteByModulo(String modulo);
+	boolean existsByCodigo(String codigo);
+    Optional<Modulo> findByCodigo(String codigo);
+    int countByCodigo(String codigo);
+    void deleteByCodigo(String codigo);
 }
