@@ -19,6 +19,7 @@ import com.proyecto.crm.services.Relacion_modulo_cursoService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class Relacion_modulo_cursoServiceImpl implements Relacion_modulo_cursoService {
 	private final Relacion_modulo_cursoRepository relacionRepository;
 	private final ModuloRepository moduloRepository;
@@ -34,7 +35,6 @@ public class Relacion_modulo_cursoServiceImpl implements Relacion_modulo_cursoSe
 	}
 
 	@Override
-	@Transactional
 	public Relacion_modulo_cursoResponseDto obtenerPorId(Long id) {
 		Relacion_modulo_curso relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación módulo-curso no encontrada."));
@@ -42,7 +42,6 @@ public class Relacion_modulo_cursoServiceImpl implements Relacion_modulo_cursoSe
 	}
 
 	@Override
-	@Transactional
 	public Relacion_modulo_cursoResponseDto crear(Relacion_modulo_cursoRequestDto requestDto) {
 		Relacion_modulo_curso relacion = new Relacion_modulo_curso();
 		actualizarRelacion(relacion, requestDto);
@@ -50,7 +49,6 @@ public class Relacion_modulo_cursoServiceImpl implements Relacion_modulo_cursoSe
 	}
 
 	@Override
-	@Transactional
 	public Relacion_modulo_cursoResponseDto actualizar(Long id, Relacion_modulo_cursoRequestDto requestDto) {
 		Relacion_modulo_curso relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación módulo-curso no encontrada."));
@@ -59,7 +57,6 @@ public class Relacion_modulo_cursoServiceImpl implements Relacion_modulo_cursoSe
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Relacion_modulo_curso relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación módulo-curso no encontrada."));

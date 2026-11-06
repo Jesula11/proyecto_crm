@@ -11,6 +11,7 @@ import com.proyecto.crm.services.DepartamentoService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class DepartamentoServiceImpl implements DepartamentoService {
 	private final DepartamentoRepository departamentoRepository;
 
@@ -19,7 +20,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override
-	@Transactional
 	public DepartamentoResponseDto obtenerPorId(Long id) {
 		Departamento departamento = departamentoRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Departamento no encontrado."));
@@ -27,7 +27,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override
-	@Transactional
 	public DepartamentoResponseDto obtenerPorId(String codigo) {
 		Departamento departamento = departamentoRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Departamento no encontrado."));
@@ -35,7 +34,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override
-	@Transactional
 	public DepartamentoResponseDto crear(DepartamentoRequestDto requestDto) {
 		Departamento departamento = new Departamento();
 		actualizarDepartamento(departamento, requestDto);
@@ -43,7 +41,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override
-	@Transactional
 	public DepartamentoResponseDto actualizar(Long id, DepartamentoRequestDto requestDto) {
 		Departamento departamento = departamentoRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Departamento no encontrado."));
@@ -52,7 +49,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override
-	@Transactional
 	public DepartamentoResponseDto actualizar(String codigo, DepartamentoRequestDto requestDto) {
 		Departamento departamento = departamentoRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Departamento no encontrado."));
@@ -61,7 +57,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Departamento departamento = departamentoRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Departamento no encontrado."));
@@ -69,7 +64,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(String codigo) {
 		Departamento departamento = departamentoRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Departamento no encontrado."));

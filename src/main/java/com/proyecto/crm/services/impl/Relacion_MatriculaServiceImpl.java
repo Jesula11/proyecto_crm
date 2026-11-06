@@ -22,6 +22,7 @@ import com.proyecto.crm.services.Relacion_MatriculaService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class Relacion_MatriculaServiceImpl implements Relacion_MatriculaService {
 	private final Relacion_MatriculaRepository relacionRepository;
 	private final AlumnoRepository alumnoRepository;
@@ -40,7 +41,6 @@ public class Relacion_MatriculaServiceImpl implements Relacion_MatriculaService 
 	}
 
 	@Override
-	@Transactional
 	public Relacion_MatriculaResponseDto obtenerPorId(Long id) {
 		Relacion_Matricula relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación de matrícula no encontrada."));
@@ -48,7 +48,6 @@ public class Relacion_MatriculaServiceImpl implements Relacion_MatriculaService 
 	}
 
 	@Override
-	@Transactional
 	public Relacion_MatriculaResponseDto crear(Relacion_MatriculaRequestDto requestDto) {
 		Relacion_Matricula relacion = new Relacion_Matricula();
 		actualizarRelacion(relacion, requestDto);
@@ -56,7 +55,6 @@ public class Relacion_MatriculaServiceImpl implements Relacion_MatriculaService 
 	}
 
 	@Override
-	@Transactional
 	public Relacion_MatriculaResponseDto actualizar(Long id, Relacion_MatriculaRequestDto requestDto) {
 		Relacion_Matricula relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación de matrícula no encontrada."));
@@ -65,7 +63,6 @@ public class Relacion_MatriculaServiceImpl implements Relacion_MatriculaService 
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Relacion_Matricula relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación de matrícula no encontrada."));

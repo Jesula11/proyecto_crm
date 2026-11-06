@@ -14,6 +14,7 @@ import com.proyecto.crm.services.ProfesorService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class ProfesorServiceImpl implements ProfesorService {
 	private final ProfesorRepository profesorRepository;
 	private final DepartamentoRepository departamentoRepository;
@@ -26,7 +27,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 	}
 
 	@Override
-	@Transactional
 	public ProfesorResponseDto obtenerPorId(Long id) {
 		Profesor profesor = profesorRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Profesor no encontrado."));
@@ -34,7 +34,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 	}
 
 	@Override
-	@Transactional
 	public ProfesorResponseDto obtenerPorIDni(String dni) {
 		Profesor profesor = profesorRepository.findByDni(dni)
 				.orElseThrow(() -> new RuntimeException("Profesor no encontrado."));
@@ -42,7 +41,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 	}
 
 	@Override
-	@Transactional
 	public ProfesorResponseDto crear(ProfesorRequestDto requestDto) {
 		Profesor profesor = new Profesor();
 		actualizarProfesor(profesor, requestDto);
@@ -50,7 +48,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 	}
 
 	@Override
-	@Transactional
 	public ProfesorResponseDto actualizar(Long id, ProfesorRequestDto requestDto) {
 		Profesor profesor = profesorRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Profesor no encontrado."));
@@ -59,7 +56,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 	}
 
 	@Override
-	@Transactional
 	public ProfesorResponseDto actualizar(String dni, ProfesorRequestDto requestDto) {
 		Profesor profesor = profesorRepository.findByDni(dni)
 				.orElseThrow(() -> new RuntimeException("Profesor no encontrado."));
@@ -68,7 +64,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Profesor profesor = profesorRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Profesor no encontrado."));
@@ -76,7 +71,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(String dni) {
 		Profesor profesor = profesorRepository.findByDni(dni)
 				.orElseThrow(() -> new RuntimeException("Profesor no encontrado."));

@@ -1,5 +1,7 @@
 package com.proyecto.crm.services;
 
+import java.util.List;
+
 import com.proyecto.crm.dtos.ProfesorRequestDto;
 import com.proyecto.crm.dtos.ProfesorResponseDto;
 
@@ -11,4 +13,5 @@ public interface ProfesorService {
 	ProfesorResponseDto actualizar(String dni, ProfesorRequestDto requestDto);
     void eliminar(Long id);
     void eliminar(String dni);
+    List<ProfesorResponseDto>obtenerTodos();
 }

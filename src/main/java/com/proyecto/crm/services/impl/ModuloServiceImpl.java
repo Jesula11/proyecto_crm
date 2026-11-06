@@ -11,6 +11,7 @@ import com.proyecto.crm.services.ModuloService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class ModuloServiceImpl implements ModuloService {
 	private final ModuloRepository moduloRepository;
 
@@ -19,7 +20,6 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 
 	@Override
-	@Transactional
 	public ModuloResponseDto obtenerPorId(Long id) {
 		Modulo modulo = moduloRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Módulo no encontrado."));
@@ -27,7 +27,6 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 
 	@Override
-	@Transactional
 	public ModuloResponseDto obtenerPorCodigo(String codigo) {
 		Modulo modulo = moduloRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Módulo no encontrado."));
@@ -35,7 +34,6 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 
 	@Override
-	@Transactional
 	public ModuloResponseDto crear(ModuloRequestDto requestDto) {
 		Modulo modulo = new Modulo();
 		actualizarModulo(modulo, requestDto);
@@ -43,7 +41,6 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 
 	@Override
-	@Transactional
 	public ModuloResponseDto actualizar(Long id, ModuloRequestDto requestDto) {
 		Modulo modulo = moduloRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Módulo no encontrado."));
@@ -52,7 +49,6 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 
 	@Override
-	@Transactional
 	public ModuloResponseDto actualizar(String codigo, ModuloRequestDto requestDto) {
 		Modulo modulo = moduloRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Módulo no encontrado."));
@@ -61,7 +57,6 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Modulo modulo = moduloRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Módulo no encontrado."));
@@ -69,7 +64,6 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(String codigo) {
 		Modulo modulo = moduloRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Módulo no encontrado."));

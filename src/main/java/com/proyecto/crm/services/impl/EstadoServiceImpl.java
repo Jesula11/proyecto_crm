@@ -11,6 +11,7 @@ import com.proyecto.crm.services.EstadoService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class EstadoServiceImpl implements EstadoService {
 	private final EstadoRepository estadoRepository;
 
@@ -19,7 +20,6 @@ public class EstadoServiceImpl implements EstadoService {
 	}
 
 	@Override
-	@Transactional
 	public EstadoResponseDto obtenerPorId(Long id) {
 		Estado estado = estadoRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Estado no encontrado."));
@@ -27,7 +27,6 @@ public class EstadoServiceImpl implements EstadoService {
 	}
 
 	@Override
-	@Transactional
 	public EstadoResponseDto crear(EstadoRequestDto requestDto) {
 		Estado estado = new Estado();
 		actualizarEstado(estado, requestDto);
@@ -35,7 +34,6 @@ public class EstadoServiceImpl implements EstadoService {
 	}
 
 	@Override
-	@Transactional
 	public EstadoResponseDto actualizar(Long id, EstadoRequestDto requestDto) {
 		Estado estado = estadoRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Estado no encontrado."));
@@ -44,7 +42,6 @@ public class EstadoServiceImpl implements EstadoService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Estado estado = estadoRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Estado no encontrado."));

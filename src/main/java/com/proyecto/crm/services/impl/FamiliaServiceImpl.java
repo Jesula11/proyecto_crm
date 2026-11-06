@@ -11,6 +11,7 @@ import com.proyecto.crm.services.FamiliaService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class FamiliaServiceImpl implements FamiliaService {
 	private final FamiliaRepository familiaRepository;
 
@@ -19,7 +20,6 @@ public class FamiliaServiceImpl implements FamiliaService {
 	}
 
 	@Override
-	@Transactional
 	public FamiliaResponseDto obtenerPorId(Long id) {
 		Familia familia = familiaRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Familia no encontrada."));
@@ -27,7 +27,6 @@ public class FamiliaServiceImpl implements FamiliaService {
 	}
 
 	@Override
-	@Transactional
 	public FamiliaResponseDto crear(FamiliaRequestDto requestDto) {
 		Familia familia = new Familia();
 		actualizarFamilia(familia, requestDto);
@@ -35,7 +34,6 @@ public class FamiliaServiceImpl implements FamiliaService {
 	}
 
 	@Override
-	@Transactional
 	public FamiliaResponseDto actualizar(Long id, FamiliaRequestDto requestDto) {
 		Familia familia = familiaRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Familia no encontrada."));
@@ -44,7 +42,6 @@ public class FamiliaServiceImpl implements FamiliaService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Familia familia = familiaRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Familia no encontrada."));

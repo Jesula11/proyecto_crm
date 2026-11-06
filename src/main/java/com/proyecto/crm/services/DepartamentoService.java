@@ -1,5 +1,7 @@
 package com.proyecto.crm.services;
 
+import java.util.List;
+
 import com.proyecto.crm.dtos.DepartamentoRequestDto;
 import com.proyecto.crm.dtos.DepartamentoResponseDto;
 
@@ -11,4 +13,5 @@ public interface DepartamentoService {
 	DepartamentoResponseDto actualizar(String codigo, DepartamentoRequestDto requestDto);
     void eliminar(Long id);
     void eliminar(String codigo);
+    List<DepartamentoResponseDto>obtenerTods();
 }

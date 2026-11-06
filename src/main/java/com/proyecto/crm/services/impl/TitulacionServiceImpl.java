@@ -11,6 +11,7 @@ import com.proyecto.crm.services.TitulacionService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class TitulacionServiceImpl implements TitulacionService {
 	private final TitulacionRepository titulacionRepository;
 
@@ -19,7 +20,6 @@ public class TitulacionServiceImpl implements TitulacionService {
 	}
 
 	@Override
-	@Transactional
 	public TitulacionResponseDto obtenerPorId(Long id) {
 		Titulacion titulacion = titulacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Titulación no encontrada."));
@@ -27,7 +27,6 @@ public class TitulacionServiceImpl implements TitulacionService {
 	}
 
 	@Override
-	@Transactional
 	public TitulacionResponseDto obtenerPorCodigo(String codigo) {
 		Titulacion titulacion = titulacionRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Titulación no encontrada."));
@@ -35,7 +34,6 @@ public class TitulacionServiceImpl implements TitulacionService {
 	}
 
 	@Override
-	@Transactional
 	public TitulacionResponseDto crear(TitulacionRequestDto requestDto) {
 		Titulacion titulacion = new Titulacion();
 		actualizarTitulacion(titulacion, requestDto);
@@ -43,7 +41,6 @@ public class TitulacionServiceImpl implements TitulacionService {
 	}
 
 	@Override
-	@Transactional
 	public TitulacionResponseDto actualizar(Long id, TitulacionRequestDto requestDto) {
 		Titulacion titulacion = titulacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Titulación no encontrada."));
@@ -52,7 +49,6 @@ public class TitulacionServiceImpl implements TitulacionService {
 	}
 
 	@Override
-	@Transactional
 	public TitulacionResponseDto actualizar(String codigo, TitulacionRequestDto requestDto) {
 		Titulacion titulacion = titulacionRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Titulación no encontrada."));
@@ -61,7 +57,6 @@ public class TitulacionServiceImpl implements TitulacionService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Titulacion titulacion = titulacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Titulación no encontrada."));
@@ -69,7 +64,6 @@ public class TitulacionServiceImpl implements TitulacionService {
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(String codigo) {
 		Titulacion titulacion = titulacionRepository.findByCodigo(codigo)
 				.orElseThrow(() -> new RuntimeException("Titulación no encontrada."));

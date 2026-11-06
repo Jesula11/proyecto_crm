@@ -19,6 +19,7 @@ import com.proyecto.crm.services.Relacion_profesor_moduloService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class Relacion_profesor_moduloServiceImpl implements Relacion_profesor_moduloService {
 	private final Relacion_profesor_moduloRepository relacionRepository;
 	private final ModuloRepository moduloRepository;
@@ -34,7 +35,6 @@ public class Relacion_profesor_moduloServiceImpl implements Relacion_profesor_mo
 	}
 
 	@Override
-	@Transactional
 	public Relacion_profesor_moduloResponseDto obtenerPorId(Long id) {
 		Relacion_profesor_modulo relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación profesor-módulo no encontrada."));
@@ -42,7 +42,6 @@ public class Relacion_profesor_moduloServiceImpl implements Relacion_profesor_mo
 	}
 
 	@Override
-	@Transactional
 	public Relacion_profesor_moduloResponseDto crear(Relacion_profesor_moduloRequestDto requestDto) {
 		Relacion_profesor_modulo relacion = new Relacion_profesor_modulo();
 		actualizarRelacion(relacion, requestDto);
@@ -50,7 +49,6 @@ public class Relacion_profesor_moduloServiceImpl implements Relacion_profesor_mo
 	}
 
 	@Override
-	@Transactional
 	public Relacion_profesor_moduloResponseDto actualizar(
 			Long id,
 			Relacion_profesor_moduloRequestDto requestDto) {
@@ -61,7 +59,6 @@ public class Relacion_profesor_moduloServiceImpl implements Relacion_profesor_mo
 	}
 
 	@Override
-	@Transactional
 	public void eliminar(Long id) {
 		Relacion_profesor_modulo relacion = relacionRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Relación profesor-módulo no encontrada."));
